@@ -1,0 +1,32 @@
+<div class="flex flex-col gap-y-4">
+	<h4 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+		Listado
+	</h4>
+	<ul class="flex flex-col gap-y-1">
+		<li
+			*ngFor="
+				let character of characterList;
+				let i = index;
+				let isEven = even;
+				let isOdd = odd
+			"
+			[ngClass]="{
+				even: isEven,
+				odd: isOdd
+			}"
+			class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 flex justify-between items-center"
+		>
+			<div>
+				<span>{{ i + 1 }}. </span>
+				<span>{{ character.name }} - </span>
+				<span>{{ character.power }}</span>
+			</div>
+			<button
+				class="block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+				(click)="onDeleteCharacter(character.id)"
+			>
+				X
+			</button>
+		</li>
+	</ul>
+</div>
